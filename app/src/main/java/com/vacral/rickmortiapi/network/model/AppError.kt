@@ -24,7 +24,7 @@ sealed interface AppError {
         @Serializable
         data class Conflict(val message: String) : Api // 409
         @Serializable
-        data class TooManyRequests(val message: String): Api
+        data class TooManyRequests(val message: String): Api //429
         @Serializable
         data class BadRequest(val message: String) : Api // 400/422
         @Serializable
