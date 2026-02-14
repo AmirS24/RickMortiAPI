@@ -1,7 +1,6 @@
 package com.vacral.rickmortiapi.data.mappers
 
 
-
 import com.vacral.rickmortiapi.data.model.CharacterDto
 import com.vacral.rickmortiapi.data.model.CharacterLocationDto
 import com.vacral.rickmortiapi.data.model.CharacterResponseDto
@@ -20,7 +19,7 @@ fun CharacterResponseDto.toDomain(): CharacterResponse {
     )
 }
 
-fun CharacterDto.toDomain(): Character {
+fun CharacterDto.toDomain(): Character{
     return Character(
         id = this.id ?: 0,
         name = this.name.orEmpty(),

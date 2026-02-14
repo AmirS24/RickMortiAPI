@@ -5,6 +5,7 @@ import com.vacral.rickmortiapi.network.model.AppError
 import io.ktor.client.call.NoTransformationFoundException
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
+import io.ktor.client.plugins.HttpRequestTimeoutException
 import io.ktor.client.plugins.RedirectResponseException
 import io.ktor.client.plugins.ServerResponseException
 import io.ktor.client.statement.bodyAsText
@@ -55,6 +56,7 @@ suspend fun mapExceptionToAppError(e: Exception) : AppError{
             if(status == 503) AppError.Network.ServerUnavailable
             else AppError.Api.ServerError(status, e.message)
         }
+        is HttpRequestTimeoutException -> AppError.Network.Timeout
         is RedirectResponseException -> AppError.Network.Unknown("Redirect error: ${e.message}")
         is JsonConvertException,
         is NoTransformationFoundException,

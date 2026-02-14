@@ -5,7 +5,7 @@ import androidx.compose.runtime.retain.retain
 import kotlinx.serialization.Serializable
 
 @Serializable
-sealed interface DataResult<out D, out E : AppError>{
+sealed interface    DataResult<out D, out E : AppError>{
 
     @Serializable
     data class Success<out D>(val data: D) : DataResult<D, Nothing>
